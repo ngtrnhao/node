@@ -997,6 +997,9 @@ changes:
 Evaluate the following argument as JavaScript. The modules which are
 predefined in the REPL can also be used in `script`.
 
+If `script` starts with `-`, pass it using `=` (for example,
+`node --print --eval=-42`) so it is parsed as the value of `--eval`.
+
 On Windows, using `cmd.exe` a single quote will not work correctly because it
 only recognizes double `"` for quoting. In Powershell or Git bash, both `'`
 and `"` are usable.
@@ -1273,6 +1276,16 @@ added:
 > Stability: 1.1 - Active Development
 
 Enable experimental support for storage inspection
+
+### `--experimental-stream-iter`
+
+<!-- YAML
+added: REPLACEME
+-->
+
+> Stability: 1 - Experimental
+
+Enable the experimental [`node:stream/iter`][] module.
 
 ### `--experimental-test-coverage`
 
@@ -3609,6 +3622,7 @@ one is included in the list below.
 * `--experimental-require-module`
 * `--experimental-shadow-realm`
 * `--experimental-specifier-resolution`
+* `--experimental-stream-iter`
 * `--experimental-test-isolation`
 * `--experimental-top-level-await`
 * `--experimental-vm-modules`
@@ -4071,7 +4085,7 @@ that run in libuv's threadpool will experience degraded performance. In order to
 mitigate this issue, one potential solution is to increase the size of libuv's
 threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value
 greater than `4` (its current default value). However, setting this from inside
-the process using `process.env.UV_THREADPOOL_SIZE=size` is not guranteed to work
+the process using `process.env.UV_THREADPOOL_SIZE=size` is not guaranteed to work
 as the threadpool would have been created as part of the runtime initialisation
 much before user code is run. For more information, see the [libuv threadpool documentation][].
 
@@ -4248,6 +4262,7 @@ node --stack-trace-limit=12 -p -e "Error.stackTraceLimit" # prints 12
 [`import` specifier]: esm.md#import-specifiers
 [`net.getDefaultAutoSelectFamilyAttemptTimeout()`]: net.md#netgetdefaultautoselectfamilyattempttimeout
 [`node:sqlite`]: sqlite.md
+[`node:stream/iter`]: stream_iter.md
 [`process.setUncaughtExceptionCaptureCallback()`]: process.md#processsetuncaughtexceptioncapturecallbackfn
 [`tls.DEFAULT_MAX_VERSION`]: tls.md#tlsdefault_max_version
 [`tls.DEFAULT_MIN_VERSION`]: tls.md#tlsdefault_min_version
